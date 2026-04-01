@@ -1,0 +1,188 @@
+.carousel-container {
+  width: 100%;
+  max-width: 100%; /* Menggunakan full width */
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 0; /* Hilangkan margin bottom */
+}
+
+.carousel-slides {
+  margin-bottom: 0; /* Hilangkan margin bottom */
+  overflow: visible;
+}
+
+/* Container untuk slide */
+.card-slide {
+  outline: none;
+  position: relative;
+  height: 100%;
+}
+
+/* Wrapper untuk gambar */
+.card-image-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Container dengan background gambar */
+.card-image-container {
+  width: 100%;
+  height: 500px; /* Tinggi tetap untuk carousel */
+  border-radius: 0; /* No border radius untuk efek full width */
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+/* Overlay dengan gradient untuk teks yang lebih mudah dibaca */
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 40px;
+}
+
+/* Caption/text styling */
+.card-caption {
+  color: #fff;
+  text-align: left;
+  max-width: 600px;
+  padding: 20px;
+  border-left: 4px solid #f26d00;
+}
+
+.card-caption h2 {
+  margin: 0 0 10px 0;
+  font-size: 36px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.card-caption p {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Button styling */
+.card-action-btn {
+  background-color: #f26d00;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.card-action-btn:hover {
+  background-color: #ff8c30;
+}
+
+/* Styling untuk arrows */
+.slick-prev,
+.slick-next {
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+}
+
+.slick-prev {
+  left: 20px;
+}
+
+.slick-next {
+  right: 20px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 30px;
+  opacity: 0.8;
+}
+
+/* Styling untuk dots */
+.slick-dots {
+  bottom: 20px;
+  z-index: 10;
+  margin: 0; /* Pastikan tidak ada margin di dots */
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: white;
+  opacity: 0.7;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #f26d00;
+  opacity: 1;
+}
+
+/* Animation for slides */
+.slick-slide {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slick-active {
+  opacity: 1;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .card-image-container {
+    height: 400px;
+  }
+  
+  .card-overlay {
+    padding: 20px;
+  }
+  
+  .card-caption h2 {
+    font-size: 28px;
+  }
+  
+  .card-caption p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-image-container {
+    height: 300px;
+  }
+  
+  .card-caption h2 {
+    font-size: 22px;
+  }
+  
+  .card-caption p {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .card-action-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
+  .card-overlay {
+    padding: 15px;
+  }
+}

@@ -1,0 +1,8 @@
+/* AuthStyles.css - Scoped styles for the Auth component only */
+
+#auth-container {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Add this to your existing Auth.css styles but scoped to only affect the Auth page */

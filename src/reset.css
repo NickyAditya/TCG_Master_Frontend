@@ -1,0 +1,24 @@
+/* Global CSS reset for the application */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reset all overflow:hidden that might be causing scrolling issues */
+body * {
+  overflow-y: visible;
+}
+
+/* Only apply overflow:hidden to specific components that need it */
+#auth-container {
+  overflow: hidden;
+}
