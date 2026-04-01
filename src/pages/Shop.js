@@ -45,7 +45,7 @@ function Shop() {
     setError(''); // Clear any previous errors
     
     try {
-      const response = await axios.get('http://localhost:5000/api/cards');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cards`);
       
       // Process the cards from the database
       const dbCards = response.data;
@@ -357,7 +357,7 @@ function Shop() {
 
       // Kirim request ke server
       // Coba gunakan endpoint inventory langsung
-      const response = await axios.post('http://localhost:5000/api/inventory/add', orderData);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/inventory/add`, orderData);
       
       if (response.status === 200 || response.status === 201) {
         // Jika berhasil, kosongkan cart dan tampilkan pesan sukses

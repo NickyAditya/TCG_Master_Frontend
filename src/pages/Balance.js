@@ -34,7 +34,7 @@ const Balance = () => {
     setLoading(true);
     
     try {
-      const response = await axios.post(`http://localhost:5000/api/users/${user.id}/balance`, {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/${user.id}/balance`, {
         amount: numericAmount
       });
       

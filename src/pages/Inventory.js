@@ -60,7 +60,7 @@ function Inventory() {
       setError('');
       
       try {
-        const response = await axios.get(`http://localhost:5000/api/inventory/${userId}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/inventory/${userId}`);
         setInventory(response.data);
       } catch (err) {
         console.error('Error fetching inventory:', err);

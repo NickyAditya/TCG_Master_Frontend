@@ -38,7 +38,7 @@ function Navbar() {
       // Fetch latest user data including balance
       const fetchUserBalance = async () => {
         try {
-          const response = await fetch(`http://localhost:5000/api/users/${currentUser.id}`);
+          const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/${currentUser.id}`);
           if (response.ok) {
             const userData = await response.json();
             // Only update if balance is different to avoid unnecessary rerenders

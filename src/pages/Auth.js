@@ -99,7 +99,7 @@ const Auth = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:5000/api/login', loginData);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/login`, loginData);
       const userData = res.data;
 
       // Update the global user state through context
@@ -141,7 +141,7 @@ const Auth = () => {
     setLoading(true);
     
     try {
-      await axios.post('http://localhost:5000/api/register', { 
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/register`, { 
         username: registerData.username, 
         email: registerData.email, 
         password: registerData.password, 

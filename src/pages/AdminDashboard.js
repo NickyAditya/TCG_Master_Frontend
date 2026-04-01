@@ -68,7 +68,7 @@ function UserManagement() {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/users');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/users`);
       setUsers(response.data);
       setError('');
     } catch (err) {
@@ -124,13 +124,13 @@ function UserManagement() {
     try {
       if (modalMode === 'add') {
         // Add new user
-        await axios.post('http://localhost:5000/api/users', currentUser);
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/users`, currentUser);
       } else if (modalMode === 'edit') {
         // Update existing user
-        await axios.put(`http://localhost:5000/api/users/${currentUser.id}`, currentUser);
+        await axios.put(`${process.env.REACT_APP_API_URL}/api/users/${currentUser.id}`, currentUser);
       } else if (modalMode === 'delete') {
         // Delete user
-        await axios.delete(`http://localhost:5000/api/users/${currentUser.id}`);
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/users/${currentUser.id}`);
       }
       
       // Refresh user list
@@ -339,7 +339,7 @@ function CardManagement() {
   const fetchCards = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/cards');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cards`);
       
       // Map backend data to frontend format if needed
       const mappedCards = response.data.map(card => ({
@@ -484,7 +484,7 @@ function CardManagement() {
           formData.append('cardImage', uploadedFile);
           formData.append('category', category);
           
-          const uploadResponse = await axios.post('http://localhost:5000/api/uploads', formData, {
+          const uploadResponse = await axios.post(`${process.env.REACT_APP_API_URL}/api/uploads`, formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
@@ -523,7 +523,7 @@ function CardManagement() {
         // Now save the card with the uploaded image path (if available)
       if (modalMode === 'add') {
         // Add new card via API
-        await axios.post('http://localhost:5000/api/cards', cardData);
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/cards`, cardData);
         // Refresh the card list
         fetchCards();
       } else if (modalMode === 'edit') {
@@ -533,19 +533,19 @@ function CardManagement() {
         }
         
         // Update existing card via API
-        await axios.put(`http://localhost:5000/api/cards/${currentCard.id}`, cardData);
+        await axios.put(`${process.env.REACT_APP_API_URL}/api/cards/${currentCard.id}`, cardData);
         // Refresh the card list
         fetchCards();
       } else if (modalMode === 'stock') {
         // Update only the stock via API
-        await axios.patch(`http://localhost:5000/api/cards/${currentCard.id}/stock`, { 
+        await axios.patch(`${process.env.REACT_APP_API_URL}/api/cards/${currentCard.id}/stock`, { 
           stock: currentCard.stock 
         });
         // Refresh the card list
         fetchCards();
       } else if (modalMode === 'delete') {
         // Delete card via API
-        await axios.delete(`http://localhost:5000/api/cards/${currentCard.id}`);
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/cards/${currentCard.id}`);
         // Refresh the card list
         fetchCards();
       }
@@ -924,7 +924,7 @@ function TransactionManagement() {
   const fetchTransactions = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/api/transactions');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/transactions`);
       setTransactions(response.data);
       setError('');
     } catch (err) {
@@ -940,7 +940,7 @@ function TransactionManagement() {
     setLoadingDetails(true);
     
     try {
-      const response = await axios.get(`http://localhost:5000/api/transactions/${transaction.id}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/transactions/${transaction.id}`);
       setTransactionItems(response.data);
       setShowDetails(true);
     } catch (err) {
@@ -959,7 +959,7 @@ function TransactionManagement() {
   
   const updateTransactionStatus = async (id, newStatus) => {
     try {
-      await axios.put(`http://localhost:5000/api/transactions/${id}/status`, { status: newStatus });
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/transactions/${id}/status`, { status: newStatus });
       
       // Update the transaction in the local state
       setTransactions(prevTransactions => 
